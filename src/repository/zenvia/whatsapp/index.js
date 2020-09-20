@@ -10,22 +10,11 @@ const client = new zenvia.Client('OxXpW-3qXmtMlhDOPv119swT23ZiT2jKMVMd');
 const whatsapp = client.getChannel('whatsapp');
 
 
-router.get('/viaWhats', async (req, res) => {
-
-  res.sendStatus(200)
-
-});
-
 router.post('/viaWhats', async (req, res) => {
 
-  const msg = req.body.message.contents[1].text;
-
-  if (msg == 'sim') {
-    const content = new zenvia.TextContent('diga olá para um robô! ˆˆ');
-  } else {
-    const content = new zenvia.TextContent('vc ainda pode localizar a ong no link');
-  }
-
+  const { mensagem } = req.body;
+  
+  const content = new zenvia.TextContent(mensagem);
   
   // ES8 or Typescript. NodeJS 7.6.0 or higher
   try {
