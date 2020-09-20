@@ -12,7 +12,7 @@ const whatsapp = client.getChannel('whatsapp');
 
 router.get('/viaWhats', async (req, res) => {
 
-  res.send(1)
+  res.sendStatus(200)
 
 });
 
@@ -31,7 +31,7 @@ router.post('/viaWhats', async (req, res) => {
   try {
     const response = await whatsapp.sendMessage('cloudy-chord', '5588999114867', content);
     
-    res.send(1);
+    res.sendStatus(200);
   } catch (error) {
     console.log(error);
   }
