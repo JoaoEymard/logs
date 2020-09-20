@@ -1,9 +1,9 @@
-var express = require('express')
-    , path = require('path')
-    , cookieParser = require('cookie-parser')
-    , logger = require('morgan');
+const express = require('express')
+const path = require('path')
+const cookieParser = require('cookie-parser')
+const logger = require('morgan');
 
-var app = express();
+const app = express();
 
 // Registrar log de acesso no console
 app.use(logger('dev', {
@@ -15,6 +15,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Redirecionando para api
-app.use('/api/', require('./src/index'));
+app.use('/api', require('./src/index'));
 
 module.exports = app;
