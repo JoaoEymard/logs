@@ -10,6 +10,12 @@ const client = new zenvia.Client('OxXpW-3qXmtMlhDOPv119swT23ZiT2jKMVMd');
 const whatsapp = client.getChannel('whatsapp');
 
 
+router.get('/viaWhats', async (req, res) => {
+
+  res.send(1)
+
+});
+
 router.post('/viaWhats', async (req, res) => {
 
   const msg = req.body.message.contents[1].text;
