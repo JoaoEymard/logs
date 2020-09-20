@@ -23,6 +23,6 @@ module.exports = {
             , endereco
         });
 
-        return doador_id
+        return doador_id;
     }
 }

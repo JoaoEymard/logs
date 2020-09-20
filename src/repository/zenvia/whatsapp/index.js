@@ -10,21 +10,26 @@ const client = new zenvia.Client('OxXpW-3qXmtMlhDOPv119swT23ZiT2jKMVMd');
 const whatsapp = client.getChannel('whatsapp');
 
 
-router.get('/viaWhats', async (req, res) => {
+router.post('/viaWhats', async (req, res) => {
 
-    // Creating a text content
-    const content = new zenvia.TextContent(req.query.msg || 'diga olá para um robô! ˆˆ');
+  const msg = req.body.message.contents[1].text;
+
+  if (msg == 'sim') {
+    const content = new zenvia.TextContent('diga olá para um robô! ˆˆ');
+  } else {
+    const content = new zenvia.TextContent('vc ainda pode localizar a ong no link');
+  }
+
+  
+  // ES8 or Typescript. NodeJS 7.6.0 or higher
+  try {
+    const response = await whatsapp.sendMessage('cloudy-chord', '5588999114867', content);
     
-    // ES8 or Typescript. NodeJS 7.6.0 or higher
-    try {
-      const response = await whatsapp.sendMessage('cloudy-chord', '5588999114867', content);
-      
-      console.log(response);
-      res.json(response);
-    } catch (error) {
-      console.log(error);
-    }
-    
+    res.send(1);
+  } catch (error) {
+    console.log(error);
+  }
+  
 });
 
 module.exports = router;

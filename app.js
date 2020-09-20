@@ -6,6 +6,8 @@ const cors = require('cors');
 
 const app = express();
 
+app.use(cors());
+
 // Registrar log de acesso no console
 app.use(logger('dev', {
     skip: function (req, res) { return res.statusCode < 400 }
