@@ -9,7 +9,12 @@ router.get('/rank', (req, res) => {
 });
 router.get('/:instituicao_id', (req, res) => {
 
-    res.json( mdlInstituicao.get(req.params.instituicao_id) );
+    res.json( mdlInstituicao.get(parseInt(req.params.instituicao_id)) );
+
+});
+router.put('/:instituicao_id', (req, res) => {
+
+    res.json( mdlInstituicao.put(parseInt(req.params.instituicao_id), req.body) );
 
 });
 router.post('/', (req, res) => {

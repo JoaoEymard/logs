@@ -30,6 +30,22 @@ module.exports = {
 
         return instituicao_id;
     },
+    put: (instituicao_id, content) => {
+        if (!content) return;
+
+        const instituicao = instituicoes.find(e => e.instituicao_id == instituicao_id);
+        const ind = instituicoes.findIndex(e => e.instituicao_id == instituicao_id);
+
+        if (ind < 0) return;
+
+        instituicoes.splice(ind, 1, {
+            ...instituicao, ...content
+        });
+
+        return {
+            ...instituicao, ...content
+        };
+    },
     rank: () => {
         return instituicoes
             .sort((a,b) => b.pontos - a.pontos)
